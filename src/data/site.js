@@ -2,7 +2,7 @@
 // Edit a line, save, and the page updates.
 
 // The sign-up form. Paste the Google Form link here (the "Send" > link, ending in /viewform).
-export const FORM_URL = "";
+export const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfYY-smDfjLOnta-0gL2QFfvs8autACaTIScH_TLQa7qK2SGA/viewform";
 
 // Where and when every meeting happens.
 export const PLACE = "LC Foyer";
