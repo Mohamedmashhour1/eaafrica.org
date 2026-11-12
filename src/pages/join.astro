@@ -5,13 +5,12 @@ const embed = FORM_URL ? FORM_URL.replace(/\/viewform.*$/, "/viewform?embedded=t
 ---
 <Base title="Join">
   <header class="pagehead wrap">
-    <div class="kicker">Join</div>
-    <h1>Come to a meeting.</h1>
-    <p class="lede muted">Every Wednesday at 18:30 in the {PLACE}. Signing up takes two minutes and means you'll hear about every meeting.</p>
+    <h1>Join the club</h1>
+    <p class="lede muted">Signing up takes two minutes, and it means you will hear about every meeting. We meet on Wednesdays from 9 to 9:30 pm in the {PLACE}.</p>
   </header>
   <section class="wrap" style="padding-bottom:80px">
     {embed
       ? <div class="formbox"><iframe src={embed} title="Sign up for Effective Altruism at ALA" loading="lazy">Loading the form</iframe></div>
-      : <p>Find Ali Mohamed or Yassir Ben Ahijba on campus and they'll add you, or just turn up on Wednesday.</p>}
+      : <p>For now, just find Ali Mohamed or Yassir Ben Ahijba on campus and they will add you, or come to the next meeting.</p>}
   </section>
 </Base>

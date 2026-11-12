@@ -1,14 +1,14 @@
 ---
 import Base from "../layouts/Base.astro";
-import { SESSIONS, EVENTS, PLACE } from "../data/site.js";
+import { SESSIONS, EVENTS, PLACE, TIME } from "../data/site.js";
 const dateOf = (n) => EVENTS.find((e) => e.session === n);
-const fmt = (e) => e ? new Date(e.date + "T12:00:00").toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) + `, ${e.start} to ${e.end}, ${PLACE}` : "";
+const fmt = (e) => e ? new Date(e.date + "T12:00:00").toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) + `, ${TIME}, ${PLACE}` : "";
 ---
 <Base title="Programme">
   <header class="pagehead wrap">
     <div class="kicker">The programme</div>
-    <h1>Six sessions, one hour each.</h1>
-    <p class="lede muted">Every session starts with ten minutes of reading in the room, so you never need to prepare. Then we discuss. The first two sessions run before the December break and the other four in Term 2.</p>
+    <h1>What we do in our sessions</h1>
+    <p class="lede muted">Each session is 30 minutes, on a Wednesday from 9 to 9:30 pm in the LC Foyer. We read something short together at the start, so you don't need to prepare anything. Session 1 is this term, sessions 2 to 5 are in Term 2, and session 6 is in Term 3.</p>
   </header>
 
   <section class="wrap" style="padding-bottom:70px">
@@ -21,13 +21,13 @@ const fmt = (e) => e ? new Date(e.date + "T12:00:00").toLocaleDateString("en-GB"
           <h2>{s.title}</h2>
           <div class="date">{fmt(dateOf(s.n))}</div>
           <p>{s.idea}</p>
-          <h3>In Africa</h3>
+          <h3>The African side of it</h3>
           <p>{s.africa}</p>
         </div>
         <div>
           <h3 style="margin-top:6px">What we read</h3>
           <ul>{s.read.map((r) => <li><a href={r.url}>{r.title}</a>, {r.by}</li>)}</ul>
-          <h3>What we talk about</h3>
+          <h3>What we discuss</h3>
           <ul>{s.questions.map((q) => <li>{q}</li>)}</ul>
         </div>
       </div>

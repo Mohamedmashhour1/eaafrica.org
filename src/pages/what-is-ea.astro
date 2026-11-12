@@ -9,35 +9,35 @@ const cases = [
   { name: "Family Empowerment Media", url: "https://www.familyempowermentmedia.org", where: "Nigeria", what: "Radio campaigns that give people clear information about family planning." },
 ];
 const faq = [
-  ["Isn't this just utilitarianism?", "No. Many people in effective altruism are utilitarians, but the core question is shared by many ethical traditions: with limited time and money, how can I help others as much as possible? You can believe in rights, duties and special care for your family and still find that question worth asking."],
-  ["What about Sam Bankman-Fried and FTX?", "He was a major donor to effective altruism causes and was sentenced to 25 years in prison in 2024 for fraud. It was a serious betrayal, and many in the community say they trusted him too easily. It is a fair warning that ambitious ideas can be misused. It does not change whether bed nets prevent malaria."],
-  ["Isn't it outsiders deciding what Africa needs?", "It can be, and that criticism is fair. Much of the money comes from rich countries. The better programmes put decisions in local hands: cash that families control, and medicine delivered through national health systems. A club of African students working through these questions is part of the answer."],
-  ["Why not help my own community first?", "You can, and nobody here will tell you not to. Most people have special duties to family and community. Effective altruism asks a second question: when you also want to help others, where does your effort do the most? Many people do both."],
-  ["Do I have to give money?", "No. Nobody in the club is asked to give anything. Giving is one option among many, mostly for later in life, and only if you want to."],
-  ["Is this a cult or a religion?", "No. It is a community built around a question, with no required beliefs and no one who can tell you what to do. Members disagree with each other all the time. You can take a break or leave without explaining."],
-  ["Can I care about this and still have a normal career?", "Yes. Most people who take these ideas seriously have ordinary careers and give some time or money. A normal career with a small plan to help counts."],
+  ["Isn't this just utilitarianism?", "Not really. A lot of people in effective altruism are utilitarians, but the main question - with limited time and money, how can I help others as much as possible? - makes sense in many ways of thinking. You can believe in rights, duties and caring for your family first and still find the question worth asking."],
+  ["What about Sam Bankman-Fried and FTX?", "He was a big donor to effective altruism causes, and in 2024 he was sentenced to 25 years in prison for fraud. It was a serious betrayal, and many people in the community say they trusted him too easily. It is a fair warning that big ideas can be misused, but it does not change whether bed nets prevent malaria."],
+  ["Isn't it outsiders deciding what Africa needs?", "Sometimes it is, and that criticism is fair. A lot of the money comes from rich countries. The better programmes leave the decisions to people on the ground - like cash that families decide how to spend, or medicine delivered through national health systems. Honestly, African students thinking about these questions is part of the answer."],
+  ["Why not help my own community first?", "You can, and nobody here will tell you not to. Most of us feel responsible for our family and community first. Effective altruism just asks one more question: when you also want to help others, where does your effort do the most good? Many people do both."],
+  ["Do I have to give money?", "No. Nobody in the club is asked to give anything. Giving is just one option, mostly for later in life, and only if you want to."],
+  ["Is this a cult or a religion?", "No. It is a community built around a question. There are no beliefs you have to accept and nobody can tell you what to do. People in the club disagree with each other all the time, and you can take a break or leave whenever you want."],
+  ["Can I care about this and still have a normal career?", "Yes, of course. Most people who take these ideas seriously have normal careers and give some of their time or money. That counts!"],
 ];
 ---
 <Base title="What is EA">
   <header class="pagehead wrap">
     <div class="kicker">What is effective altruism?</div>
-    <h1>Using evidence and careful thinking to help others as much as we can.</h1>
+    <h1>Effective altruism is about using evidence to help others as much as we can.</h1>
   </header>
 
   <section class="sec">
     <div class="wrap two">
-      <h2>The idea, in three sentences</h2>
+      <h2>The main idea</h2>
       <ol class="ideas">
-        <li>Some ways of helping do far more good than others. With the same money, one programme can do a hundred times more than another.</li>
-        <li>So we try to find the best ones, using evidence and honest reasoning, and we change our minds when we are wrong.</li>
-        <li>Then we act on what we find, with our careers, our time and, for some of us later on, our money.</li>
+        <li>Some ways of helping do way more good than others. With the same money, one programme can help a hundred times more people than another.</li>
+        <li>So we try to find the best ones. We look at the evidence, think it through honestly, and change our minds when we are wrong.</li>
+        <li>Then we actually act on it - through our careers, our time and (for some of us, later on) our money.</li>
       </ol>
     </div>
   </section>
 
   <section class="band">
     <div class="wrap">
-      <h2 style="font-size:36px;max-width:24ch">Many of the world's most solvable problems are on our continent.</h2>
+      <h2 style="font-size:36px;max-width:26ch">A lot of the world's biggest problems that we can actually fix are here in Africa.</h2>
       <div class="nums">
         {NUMBERS.map((x) => <div><div class="n">{x.n}</div><p>{x.text}</p><a class="src" href={x.url}>{x.src}</a></div>)}
       </div>
@@ -46,8 +46,8 @@ const faq = [
 
   <section class="sec">
     <div class="wrap">
-      <h2>Programmes that work, in Africa</h2>
-      <p class="muted" style="max-width:60ch">A few of the organisations we talk about in sessions.</p>
+      <h2>Some organisations doing amazing work in Africa</h2>
+      <p class="muted" style="max-width:60ch">We talk about a few of them in our sessions.</p>
       <table class="t">
         <thead><tr><th>Organisation</th><th>Where</th><th>What it does</th></tr></thead>
         <tbody>{cases.map((c) => <tr><td><a href={c.url}>{c.name}</a></td><td>{c.where}</td><td>{c.what}</td></tr>)}</tbody>
@@ -57,14 +57,14 @@ const faq = [
 
   <section class="sec">
     <div class="wrap two">
-      <h2>Hard questions</h2>
+      <h2>Questions people usually ask</h2>
       <div>{faq.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}</div>
     </div>
   </section>
 
   <section class="sec">
     <div class="wrap two">
-      <h2>Where to start reading</h2>
+      <h2>If you want to start reading</h2>
       <ol class="ideas">
         <li><a href="https://www.effectivealtruism.org/articles/introduction-to-effective-altruism">Introduction to effective altruism</a>, effectivealtruism.org. Fifteen minutes.</li>
         <li><a href="https://www.givewell.org/giving101">Giving 101</a>, GiveWell. How to tell whether a charity works.</li>

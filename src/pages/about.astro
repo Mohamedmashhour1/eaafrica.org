@@ -1,37 +1,36 @@
 ---
 import Base from "../layouts/Base.astro";
-import { PEOPLE, PLACE } from "../data/site.js";
+import { PEOPLE, PLACE, TIME } from "../data/site.js";
 ---
 <Base title="About">
   <header class="pagehead wrap">
-    <div class="kicker">About</div>
-    <h1>A student club, run by students.</h1>
-    <p class="lede muted">Effective Altruism at ALA meets every Wednesday in the {PLACE}. Anyone at ALA can come, in Year 1 or Year 2, and you don't need to know anything about effective altruism first.</p>
+    <h1>About the club</h1>
+    <p class="lede muted">Effective Altruism at ALA is a student club. We meet on Wednesdays from 9 to 9:30 pm in the {PLACE}, and everyone at ALA is welcome (Year 1 or Year 2). You don't need to know anything about effective altruism before coming.</p>
   </header>
 
   <section class="sec">
     <div class="wrap">
-      <h2>Who runs it</h2>
+      <h2>Who runs the club</h2>
       <div class="people">
-        {PEOPLE.map((p) => <div><img src={p.photo} alt={p.name} loading="lazy" width="800" height="1000" /><h3>{p.name}</h3><div class="role">{p.role}</div><p>{p.text}</p></div>)}
+        {PEOPLE.map((p) => <div><img src={p.photo} alt={p.name} loading="lazy" width="800" height="1000" /><h3>{p.name}</h3><div class="role">{p.role}</div></div>)}
       </div>
     </div>
   </section>
 
   <section class="sec">
     <div class="wrap two">
-      <h2>Your details</h2>
+      <h2>Your information</h2>
       <div>
-        <p>When you sign up, we ask for your name, your ALA email and your year. Only the organisers see them. We use them to tell you about meetings and nothing else.</p>
-        <p>We delete the list at the end of each school year. If you want to leave earlier, tell Ali or Yassir and we'll remove you straight away.</p>
+        <p>When you sign up, we ask for your name, your ALA email and your year. Only the organisers can see them, and we only use them to let you know about meetings.</p>
+        <p>We delete everything at the end of the school year. If you want to be removed before that, just tell Ali or Yassir.</p>
       </div>
     </div>
   </section>
 
   <section class="sec">
     <div class="wrap two">
-      <h2>Get in touch</h2>
-      <p>Find Ali or Yassir on campus, or come to any Wednesday meeting in the {PLACE} and say hello.</p>
+      <h2>Questions?</h2>
+      <p>Just talk to Ali or Yassir on campus, or come to any meeting and say hi!</p>
     </div>
   </section>
 </Base>

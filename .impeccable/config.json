@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "instrument sans",
+        "createdAt": "2026-11-12T11:27:35.012Z",
+        "reason": "brand kit font: EA @ ALA brand kit and guide (built earlier this session) specify Lora + Instrument Sans"
+      }
+    ]
+  }
+}
