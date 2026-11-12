@@ -1,0 +1,83 @@
+---
+import Base from "../layouts/Base.astro";
+import NextMeeting from "../components/NextMeeting.astro";
+import { CLIPS, NUMBERS } from "../data/site.js";
+const pages = [
+  { href: "/what-is-ea", title: "What is EA", text: "The idea in plain words, why it matters for Africa, and honest answers to the hard questions." },
+  { href: "/programme", title: "Programme", text: "Six one-hour sessions. Reading happens in the room, so there is no homework." },
+  { href: "/events", title: "Events", text: "Every meeting, with dates and times. All in the LC Foyer." },
+  { href: "/opportunities", title: "Opportunities", text: "Courses, career advice and communities to know about, now and later." },
+  { href: "/about", title: "About", text: "Who runs the club and how we look after your details." },
+];
+---
+<Base>
+  <section class="hero" id="hero">
+    {CLIPS.map((c, i) => <video muted playsinline preload={i === 0 ? "auto" : "none"} data-src={`/media/clips/${c.file}`} poster={i === 0 ? "/media/clips/poster.jpg" : undefined}></video>)}
+    <div class="shade"></div>
+    <div class="inner wrap">
+      <div class="kicker">A student club at African Leadership Academy in Johannesburg</div>
+      <h1>How do we do the most good?</h1>
+      <p class="lede">We read short pieces, argue about them over snacks, and work out where our time, careers and money can do the most good.</p>
+      <div class="actions"><a class="btn solid" href="/join">Join the club</a><a class="btn ghost" href="/programme">See the programme</a></div>
+    </div>
+    <div class="ticker" aria-hidden="true"><div class="wrap">{CLIPS.map((c) => <span>{c.label}</span>)}</div></div>
+    <div class="credit">Footage from Pexels</div>
+  </section>
+
+  <NextMeeting />
+
+  <section class="rotate">
+    <div class="wrap">
+      <p class="big">Some of us will become <span class="slot" data-k="0">doctors</span> who fight <span class="slot" data-k="1">malaria</span> in <span style="white-space:nowrap"><span class="slot" data-k="2">Nigeria</span>.</span></p>
+      <p class="muted" style="margin-top:22px">The point of the club is working out which version of that sentence is yours.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="kicker">Why start here</div>
+      <h2 style="font-size:40px;line-height:1.12;max-width:22ch">Many of the world's most solvable problems are on our continent.</h2>
+      <div class="nums">
+        {NUMBERS.map((x) => <div><div class="n">{x.n}</div><p>{x.text}</p><a class="src" href={x.url}>{x.src}</a></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="border-top:0">
+    <div class="wrap">
+      <h2>Where to next</h2>
+      <nav class="rows">
+        {pages.map((p) => <a href={p.href}><h3>{p.title}</h3><span>{p.text}</span><span class="go">Open</span></a>)}
+      </nav>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Video montage: two clips at a time, crossfading, each loaded only when it is next.
+  const hero = document.getElementById("hero");
+  const vids = [...hero.querySelectorAll("video")];
+  const labels = [...hero.querySelectorAll(".ticker span")];
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const load = (v) => { if (!v.src) { v.src = v.dataset.src; v.load(); } };
+  let i = 0;
+  function show(k) {
+    const v = vids[k]; load(v); v.currentTime = 0; v.play().catch(() => {});
+    vids.forEach((x, j) => x.classList.toggle("on", j === k));
+    labels.forEach((x, j) => x.classList.toggle("on", j === k));
+    load(vids[(k + 1) % vids.length]);
+  }
+  show(0);
+  if (!still) setInterval(() => { i = (i + 1) % vids.length; show(i); }, 4500);
+
+  // Rotating sentence.
+  const sets = [
+    ["doctors", "engineers", "founders", "researchers", "teachers", "policymakers", "economists"],
+    ["malaria", "extreme poverty", "the next pandemic", "lead poisoning", "risks from AI", "hunger"],
+    ["Nigeria", "Kenya", "Ethiopia", "Ghana", "Rwanda", "the DRC", "Malawi", "Senegal", "Uganda", "Zambia"],
+  ];
+  if (!still) document.querySelectorAll(".slot").forEach((el) => {
+    const k = +el.dataset.k; let n = 0;
+    setInterval(() => { el.classList.add("out"); setTimeout(() => { n = (n + 1) % sets[k].length; el.textContent = sets[k][n]; el.classList.remove("out"); }, 350); }, 2600 + k * 700);
+  });
+</script>

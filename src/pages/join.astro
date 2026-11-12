@@ -1,0 +1,17 @@
+---
+import Base from "../layouts/Base.astro";
+import { FORM_URL, PLACE } from "../data/site.js";
+const embed = FORM_URL ? FORM_URL.replace(/\/viewform.*$/, "/viewform?embedded=true") : "";
+---
+<Base title="Join">
+  <header class="pagehead wrap">
+    <div class="kicker">Join</div>
+    <h1>Come to a meeting.</h1>
+    <p class="lede muted">Every Wednesday at 18:30 in the {PLACE}. Signing up takes two minutes and means you'll hear about every meeting.</p>
+  </header>
+  <section class="wrap" style="padding-bottom:80px">
+    {embed
+      ? <div class="formbox"><iframe src={embed} title="Sign up for Effective Altruism at ALA" loading="lazy">Loading the form</iframe></div>
+      : <p>Find Ali Mohamed or Yassir Ben Ahijba on campus and they'll add you, or just turn up on Wednesday.</p>}
+  </section>
+</Base>

@@ -1,0 +1,60 @@
+---
+import "../styles/global.css";
+const { title, description = "Effective Altruism at African Leadership Academy, Johannesburg. A student club about doing the most good with our careers, time and money." } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const tabs = [
+  { href: "/", label: "Home" },
+  { href: "/what-is-ea", label: "What is EA" },
+  { href: "/programme", label: "Programme" },
+  { href: "/events", label: "Events" },
+  { href: "/opportunities", label: "Opportunities" },
+  { href: "/about", label: "About" },
+];
+const full = title ? `${title} | Effective Altruism at ALA` : "Effective Altruism at African Leadership Academy";
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{full}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={full} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="https://eaafrica.org/og.jpg" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Lora:wght@500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="logo" href="/" aria-label="Effective Altruism at African Leadership Academy, home"><img src="/logo.svg" alt="Effective Altruism, African Leadership Academy" width="330" height="88" /></a>
+      <button class="menu" aria-expanded="false" aria-controls="tabs">Menu</button>
+      <ul class="tabs" id="tabs">
+        {tabs.map((t) => <li><a href={t.href} aria-current={path === t.href ? "page" : undefined}>{t.label}</a></li>)}
+        <li class="join"><a href="/join" aria-current={path === "/join" ? "page" : undefined}>Join</a></li>
+      </ul>
+    </div>
+  </header>
+  <main><slot /></main>
+  <footer>
+    <div class="wrap">
+      <div>
+        <img src="/logo-white.svg" alt="Effective Altruism, African Leadership Academy" width="330" height="88" />
+        <p style="margin-top:18px;max-width:40ch">A student club at African Leadership Academy in Johannesburg, and part of the global <a href="https://www.effectivealtruism.org">effective altruism</a> community.</p>
+      </div>
+      <ul>
+        {tabs.map((t) => <li><a href={t.href}>{t.label}</a></li>)}
+        <li><a href="/join">Join</a></li>
+      </ul>
+    </div>
+  </footer>
+  <script>
+    const b = document.querySelector(".menu"), t = document.getElementById("tabs");
+    b?.addEventListener("click", () => { const o = t.classList.toggle("open"); b.setAttribute("aria-expanded", String(o)); });
+  </script>
+</body>
+</html>

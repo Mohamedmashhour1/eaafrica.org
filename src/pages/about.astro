@@ -1,0 +1,37 @@
+---
+import Base from "../layouts/Base.astro";
+import { PEOPLE, PLACE } from "../data/site.js";
+---
+<Base title="About">
+  <header class="pagehead wrap">
+    <div class="kicker">About</div>
+    <h1>A student club, run by students.</h1>
+    <p class="lede muted">Effective Altruism at ALA meets every Wednesday in the {PLACE}. Anyone at ALA can come, in Year 1 or Year 2, and you don't need to know anything about effective altruism first.</p>
+  </header>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2>Who runs it</h2>
+      <div class="people">
+        {PEOPLE.map((p) => <div><img src={p.photo} alt={p.name} loading="lazy" width="800" height="1000" /><h3>{p.name}</h3><div class="role">{p.role}</div><p>{p.text}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap two">
+      <h2>Your details</h2>
+      <div>
+        <p>When you sign up, we ask for your name, your ALA email and your year. Only the organisers see them. We use them to tell you about meetings and nothing else.</p>
+        <p>We delete the list at the end of each school year. If you want to leave earlier, tell Ali or Yassir and we'll remove you straight away.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap two">
+      <h2>Get in touch</h2>
+      <p>Find Ali or Yassir on campus, or come to any Wednesday meeting in the {PLACE} and say hello.</p>
+    </div>
+  </section>
+</Base>

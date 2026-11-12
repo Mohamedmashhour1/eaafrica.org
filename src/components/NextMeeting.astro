@@ -1,0 +1,23 @@
+---
+// Shows the next upcoming meeting. Which one is "next" is worked out in the visitor's browser,
+// so it stays right without rebuilding the site.
+import { EVENTS, PLACE } from "../data/site.js";
+const fmt = (d) => new Date(d + "T12:00:00").toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" });
+---
+<div class="wrap">
+  {EVENTS.map((e) => (
+    <section class="meet" data-date={e.date} hidden>
+      <div class="when">Next meeting</div>
+      <div>
+        <h3>{e.title}</h3>
+        <p>{fmt(e.date)}, {e.start} to {e.end}, {PLACE}. {e.text}</p>
+      </div>
+      <a class="btn ghost" href="/events">All meetings</a>
+    </section>
+  ))}
+</div>
+<script>
+  const today = new Date().toISOString().slice(0, 10);
+  const next = [...document.querySelectorAll(".meet[data-date]")].find((el) => el.dataset.date >= today);
+  if (next) next.hidden = false;
+</script>

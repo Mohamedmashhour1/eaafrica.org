@@ -1,0 +1,49 @@
+---
+import Base from "../layouts/Base.astro";
+import { SESSIONS, EVENTS, PLACE } from "../data/site.js";
+const dateOf = (n) => EVENTS.find((e) => e.session === n);
+const fmt = (e) => e ? new Date(e.date + "T12:00:00").toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) + `, ${e.start} to ${e.end}, ${PLACE}` : "";
+---
+<Base title="Programme">
+  <header class="pagehead wrap">
+    <div class="kicker">The programme</div>
+    <h1>Six sessions, one hour each.</h1>
+    <p class="lede muted">Every session starts with ten minutes of reading in the room, so you never need to prepare. Then we discuss. The first two sessions run before the December break and the other four in Term 2.</p>
+  </header>
+
+  <section class="wrap" style="padding-bottom:70px">
+    <div class="stabs" role="tablist" aria-label="Sessions">
+      {SESSIONS.map((s, i) => <button role="tab" id={`tab-${s.n}`} aria-controls={`s-${s.n}`} aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? 0 : -1}>Session {s.n}</button>)}
+    </div>
+    {SESSIONS.map((s, i) => (
+      <div class="spanel two" role="tabpanel" id={`s-${s.n}`} aria-labelledby={`tab-${s.n}`} hidden={i !== 0}>
+        <div>
+          <h2>{s.title}</h2>
+          <div class="date">{fmt(dateOf(s.n))}</div>
+          <p>{s.idea}</p>
+          <h3>In Africa</h3>
+          <p>{s.africa}</p>
+        </div>
+        <div>
+          <h3 style="margin-top:6px">What we read</h3>
+          <ul>{s.read.map((r) => <li><a href={r.url}>{r.title}</a>, {r.by}</li>)}</ul>
+          <h3>What we talk about</h3>
+          <ul>{s.questions.map((q) => <li>{q}</li>)}</ul>
+        </div>
+      </div>
+    ))}
+  </section>
+</Base>
+<script>
+  const tabs = [...document.querySelectorAll('[role="tab"]')];
+  function pick(t) {
+    tabs.forEach((x) => { const on = x === t; x.setAttribute("aria-selected", String(on)); x.tabIndex = on ? 0 : -1; document.getElementById(x.getAttribute("aria-controls")).hidden = !on; });
+    history.replaceState(null, "", "#" + t.getAttribute("aria-controls"));
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => pick(t));
+    t.addEventListener("keydown", (e) => { const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0; if (d) { const n = tabs[(i + d + tabs.length) % tabs.length]; n.focus(); pick(n); } });
+  });
+  const start = tabs.find((t) => "#" + t.getAttribute("aria-controls") === location.hash);
+  if (start) pick(start);
+</script>

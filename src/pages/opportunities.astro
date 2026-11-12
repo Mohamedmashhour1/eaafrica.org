@@ -1,0 +1,19 @@
+---
+import Base from "../layouts/Base.astro";
+import { OPPORTUNITIES } from "../data/site.js";
+---
+<Base title="Opportunities">
+  <header class="pagehead wrap">
+    <div class="kicker">Opportunities</div>
+    <h1>Places to keep learning, now and later.</h1>
+    <p class="lede muted">Free guides, courses and communities worth knowing about. Ask Ali or Yassir if you want help with any of them.</p>
+  </header>
+  <section class="wrap" style="padding-bottom:80px">
+    {OPPORTUNITIES.map((g) => (
+      <div class="ogroup">
+        <h2>{g.group}</h2>
+        {g.items.map((o) => <div class="opp"><h3><a href={o.url}>{o.name}</a></h3><p>{o.text}</p></div>)}
+      </div>
+    ))}
+  </section>
+</Base>

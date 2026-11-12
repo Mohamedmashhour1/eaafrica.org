@@ -1,0 +1,33 @@
+---
+import Base from "../layouts/Base.astro";
+import { EVENTS, PLACE } from "../data/site.js";
+const day = (d) => new Date(d + "T12:00:00").toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "long", year: "numeric" });
+---
+<Base title="Events">
+  <header class="pagehead wrap">
+    <div class="kicker">Events</div>
+    <h1>Every meeting is on a Wednesday at 18:30 in the {PLACE}.</h1>
+    <p class="lede muted">Each one takes an hour. You can come to any of them, even if you missed the last one.</p>
+  </header>
+  <section class="wrap" style="padding-bottom:40px">
+    <h2 style="font-size:30px;margin-bottom:16px">Coming up</h2>
+    <div id="upcoming">
+      {EVENTS.map((e) => (
+        <div class="ev" data-date={e.date}>
+          <div><div class="d">{day(e.date)}</div><div class="t2">{e.start} to {e.end}, {PLACE}</div></div>
+          <div><h3>{e.title}</h3><p>{e.text} {e.session && <a href={`/programme#s-${e.session}`}>What we read</a>}</p></div>
+        </div>
+      ))}
+    </div>
+  </section>
+  <section class="wrap" style="padding-bottom:80px" id="pastwrap" hidden>
+    <h2 style="font-size:30px;margin-bottom:16px">Past</h2>
+    <div id="past"></div>
+  </section>
+</Base>
+<script>
+  const today = new Date().toISOString().slice(0, 10);
+  const past = document.getElementById("past");
+  [...document.querySelectorAll(".ev[data-date]")].filter((el) => el.dataset.date < today).reverse().forEach((el) => { el.classList.add("past"); past.appendChild(el); });
+  if (past.children.length) document.getElementById("pastwrap").hidden = false;
+</script>
