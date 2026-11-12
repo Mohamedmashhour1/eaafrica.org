@@ -16,7 +16,9 @@ const fmt = (e) => e ? new Date(e.date + "T12:00:00").toLocaleDateString("en-GB"
       {SESSIONS.map((s, i) => <button role="tab" id={`tab-${s.n}`} aria-controls={`s-${s.n}`} aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? 0 : -1}>Session {s.n}</button>)}
     </div>
     {SESSIONS.map((s, i) => (
-      <div class="spanel two" role="tabpanel" id={`s-${s.n}`} aria-labelledby={`tab-${s.n}`} hidden={i !== 0}>
+      <div class="spanel" role="tabpanel" id={`s-${s.n}`} aria-labelledby={`tab-${s.n}`} hidden={i !== 0}>
+        <img class="sphoto" src={s.img} alt={s.alt} width="1600" height="900" loading={i === 0 ? "eager" : "lazy"} />
+        <div class="two">
         <div>
           <h2>{s.title}</h2>
           <div class="date">{fmt(dateOf(s.n))}</div>
@@ -29,6 +31,7 @@ const fmt = (e) => e ? new Date(e.date + "T12:00:00").toLocaleDateString("en-GB"
           <ul>{s.read.map((r) => <li><a href={r.url}>{r.title}</a>, {r.by}</li>)}</ul>
           <h3>What we discuss</h3>
           <ul>{s.questions.map((q) => <li>{q}</li>)}</ul>
+        </div>
         </div>
       </div>
     ))}

@@ -2,11 +2,11 @@
 import Base from "../layouts/Base.astro";
 import { NUMBERS } from "../data/site.js";
 const cases = [
-  { name: "New Incentives", url: "https://www.newincentives.org", where: "Northern Nigeria", what: "Small cash payments to families when their children are vaccinated. One of GiveWell's top charities." },
-  { name: "Malaria Consortium", url: "https://www.malariaconsortium.org", where: "The Sahel and Nigeria", what: "Medicine given to young children during the rainy season, when malaria peaks. Another GiveWell top charity." },
-  { name: "GiveDirectly", url: "https://www.givedirectly.org", where: "Kenya, Uganda, Malawi and more", what: "Sends money straight to families living in poverty, and studies what happens next." },
-  { name: "Lead Exposure Elimination Project", url: "https://leadelimination.org", where: "Malawi and other countries", what: "Works with governments to get lead out of paint, which harms children's brains." },
-  { name: "Family Empowerment Media", url: "https://www.familyempowermentmedia.org", where: "Nigeria", what: "Radio campaigns that give people clear information about family planning." },
+  { name: "New Incentives", logo: "newincentives.org", url: "https://www.newincentives.org", where: "Northern Nigeria", what: "Small cash payments to families when their children are vaccinated. One of GiveWell's top charities." },
+  { name: "Malaria Consortium", logo: "malariaconsortium.org", url: "https://www.malariaconsortium.org", where: "The Sahel and Nigeria", what: "Medicine given to young children during the rainy season, when malaria peaks. Another GiveWell top charity." },
+  { name: "GiveDirectly", logo: "givedirectly.org", url: "https://www.givedirectly.org", where: "Kenya, Uganda, Malawi and more", what: "Sends money straight to families living in poverty, and studies what happens next." },
+  { name: "Lead Exposure Elimination Project", logo: "leadelimination.org", url: "https://leadelimination.org", where: "Malawi and other countries", what: "Works with governments to get lead out of paint, which harms children's brains." },
+  { name: "Family Empowerment Media", logo: "familyempowermentmedia.org", url: "https://www.familyempowermentmedia.org", where: "Nigeria", what: "Radio campaigns that give people clear information about family planning." },
 ];
 const faq = [
   ["Isn't this just utilitarianism?", "Not really. A lot of people in effective altruism are utilitarians, but the main question - with limited time and money, how can I help others as much as possible? - makes sense in many ways of thinking. You can believe in rights, duties and caring for your family first and still find the question worth asking."],
@@ -23,6 +23,7 @@ const faq = [
     <div class="kicker">What is effective altruism?</div>
     <h1>Effective altruism is about using evidence to help others as much as we can.</h1>
   </header>
+  <figure class="strip wrap"><img src="/media/photos/wide-health.jpg" alt="A health worker vaccinating a young child" width="1600" height="900" /></figure>
 
   <section class="sec">
     <div class="wrap two">
@@ -50,7 +51,7 @@ const faq = [
       <p class="muted" style="max-width:60ch">We talk about a few of them in our sessions.</p>
       <table class="t">
         <thead><tr><th>Organisation</th><th>Where</th><th>What it does</th></tr></thead>
-        <tbody>{cases.map((c) => <tr><td><a href={c.url}>{c.name}</a></td><td>{c.where}</td><td>{c.what}</td></tr>)}</tbody>
+        <tbody>{cases.map((c) => <tr><td><span class="org"><img class="orglogo" src={`/media/logos/${c.logo}.png`} alt="" width="30" height="30" /><a href={c.url}>{c.name}</a></span></td><td>{c.where}</td><td>{c.what}</td></tr>)}</tbody>
       </table>
     </div>
   </section>

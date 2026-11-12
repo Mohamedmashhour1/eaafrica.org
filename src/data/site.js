@@ -22,6 +22,7 @@ export const CLIPS = [
 ];
 
 // Meetings. Dates are YYYY-MM-DD. Past meetings move to "Past" on their own.
+// To show a photo from a meeting, put it in public/media/events/ and add  photo: "/media/events/name.jpg"  to that meeting.
 // Term 1: twice. Terms 2 and 3: twice a month for two months.
 export const EVENTS = [
   { date: "2026-11-18", term: "Term 1", title: "The Giving Game", text: "Our first meeting! In small groups, you read about three charities and decide how to split a pot of money between them. Then we look at what the evidence says." },
@@ -39,7 +40,7 @@ export const EVENTS = [
 // The six sessions.
 export const SESSIONS = [
   {
-    n: 1, title: "Doing good on purpose",
+    n: 1, img: "/media/photos/s1.jpg", alt: "A health worker vaccinating a young child", title: "Doing good on purpose",
     idea: "Caring about a problem and actually helping with it are two different things. We look at how much the world has changed since 1990, and why.",
     read: [
       { title: "On Caring", by: "Nate Soares", url: "https://mindingourway.com/on-caring/" },
@@ -49,7 +50,7 @@ export const SESSIONS = [
     questions: ["What problem have you cared about without doing anything about it?", "Is it possible to care about a million people the way you care about one?", "Which change since 1990 surprised you most?"],
   },
   {
-    n: 2, title: "Comparing ways of helping",
+    n: 2, img: "/media/photos/s2.jpg", alt: "A busy West African street market", title: "Comparing ways of helping",
     idea: "Two programmes can cost exactly the same and still do very different amounts of good. We look at how people compare them.",
     read: [
       { title: "Giving 101", by: "GiveWell", url: "https://www.givewell.org/giving101" },
@@ -59,7 +60,7 @@ export const SESSIONS = [
     questions: ["Why might a well-meaning charity do very little good?", "What would convince you a programme works?", "Is it cold to compare lives with numbers, or is it more caring?"],
   },
   {
-    n: 3, title: "Who should we care about?",
+    n: 3, img: "/media/photos/s3.jpg", alt: "A grandmother smiling and holding a baby", title: "Who should we care about?",
     idea: "How far should we care - about strangers, about people who are not born yet, about animals? We talk about where we draw the line and why.",
     read: [
       { title: "Radical empathy", by: "Holden Karnofsky", url: "https://coefficientgiving.org/research/radical-empathy/" },
@@ -69,7 +70,7 @@ export const SESSIONS = [
     questions: ["Who did people in the past leave out, that we now include?", "Who might we be leaving out today?", "Does distance change how much someone matters?"],
   },
   {
-    n: 4, title: "The biggest risks",
+    n: 4, img: "/media/photos/s4.jpg", alt: "A scientist working in a laboratory", title: "The biggest risks",
     idea: "Some risks are unlikely but could affect everyone, like pandemics and very powerful AI. We talk about how seriously we should take them.",
     read: [
       { title: "Preventing catastrophic pandemics (summary)", by: "80,000 Hours", url: "https://80000hours.org/problem-profiles/preventing-catastrophic-pandemics/" },
@@ -79,7 +80,7 @@ export const SESSIONS = [
     questions: ["What made Ebola hard to stop, and what finally worked?", "How do you weigh a small chance of a huge disaster?", "Who in Africa should have a say in how AI is built?"],
   },
   {
-    n: 5, title: "Is effective altruism wrong?",
+    n: 5, img: "/media/photos/s5.jpg", alt: "Students talking around a table in a library", title: "Is effective altruism wrong?",
     idea: "We read a strong critique of effective altruism and debate it. The motion: you should give to the most effective charity, not to your own community.",
     read: [
       { title: "The deaths of effective altruism", by: "Leif Wenar, WIRED", url: "https://www.wired.com/story/deaths-of-effective-altruism/" },
@@ -89,7 +90,7 @@ export const SESSIONS = [
     questions: ["What is the strongest point the critique makes?", "Where do you think it goes wrong?", "What would an African-led version of this movement look like?"],
   },
   {
-    n: 6, title: "What can I actually do?",
+    n: 6, img: "/media/photos/s6.jpg", alt: "A student working on a laptop", title: "What can I actually do?",
     idea: "We talk about degrees, careers and next steps, and everyone leaves with one thing they want to try.",
     read: [
       { title: "Key ideas, first section", by: "80,000 Hours", url: "https://80000hours.org/key-ideas/" },
@@ -102,24 +103,24 @@ export const SESSIONS = [
 // Opportunities. Grouped by when they fit.
 export const OPPORTUNITIES = [
   { group: "Start now", items: [
-    { name: "80,000 Hours", url: "https://80000hours.org", text: "A free guide to choosing a career that does good. They also have a podcast, a job board and free one-on-one advice." },
-    { name: "Probably Good", url: "https://probablygood.org", text: "Free career advice for people who want their work to really help others, wherever they live." },
-    { name: "GiveWell", url: "https://www.givewell.org", text: "Really detailed research on which charities save and improve the most lives for each dollar." },
-    { name: "Giving What We Can", url: "https://www.givingwhatwecan.org", text: "Charity recommendations and giving pledges, including a 1% pledge for students (completely optional)." },
-    { name: "EA Forum", url: "https://forum.effectivealtruism.org", text: "The online forum where people share research, ask questions and discuss ideas." },
+    { name: "80,000 Hours", logo: "/media/logos/80000hours.org.png", url: "https://80000hours.org", text: "A free guide to choosing a career that does good. They also have a podcast, a job board and free one-on-one advice." },
+    { name: "Probably Good", logo: "/media/logos/probablygood.org.png", url: "https://probablygood.org", text: "Free career advice for people who want their work to really help others, wherever they live." },
+    { name: "GiveWell", logo: "/media/logos/givewell.org.png", url: "https://www.givewell.org", text: "Really detailed research on which charities save and improve the most lives for each dollar." },
+    { name: "Giving What We Can", logo: "/media/logos/givingwhatwecan.org.png", url: "https://www.givingwhatwecan.org", text: "Charity recommendations and giving pledges, including a 1% pledge for students (completely optional)." },
+    { name: "EA Forum", logo: "/media/logos/forum.effectivealtruism.org.png", url: "https://forum.effectivealtruism.org", text: "The online forum where people share research, ask questions and discuss ideas." },
   ]},
   { group: "At university", items: [
-    { name: "Introductory EA Program", url: "https://www.effectivealtruism.org/virtual-programs/introductory-program", text: "A free eight-week online discussion course with people from around the world. For people 18 and over." },
-    { name: "BlueDot Impact", url: "https://bluedot.org", text: "Free online courses on AI safety and other big risks." },
-    { name: "Effective Thesis", url: "https://effectivethesis.org", text: "Help choosing a thesis or research topic that matters." },
-    { name: "EA Global and EAGx", url: "https://www.effectivealtruism.org/ea-global", text: "Conferences around the world. Students can apply, and some financial support for travel is available." },
+    { name: "Introductory EA Program", logo: "/media/logos/effectivealtruism.org.png", url: "https://www.effectivealtruism.org/virtual-programs/introductory-program", text: "A free eight-week online discussion course with people from around the world. For people 18 and over." },
+    { name: "BlueDot Impact", logo: "/media/logos/bluedot.org.png", url: "https://bluedot.org", text: "Free online courses on AI safety and other big risks." },
+    { name: "Effective Thesis", logo: "/media/logos/effectivethesis.org.png", url: "https://effectivethesis.org", text: "Help choosing a thesis or research topic that matters." },
+    { name: "EA Global and EAGx", logo: "/media/logos/effectivealtruism.org.png", url: "https://www.effectivealtruism.org/ea-global", text: "Conferences around the world. Students can apply, and some financial support for travel is available." },
   ]},
   { group: "In Africa", items: [
-    { name: "EA South Africa", url: "https://www.effectivealtruism.co.za", text: "Programmes, events and free career conversations in South Africa." },
-    { name: "EA Nigeria", url: "https://forum.effectivealtruism.org/groups/xrvwspdqKbnvYj4bm", text: "The national group, based in Abuja. It hosted Africa's first EAGx conference in 2025." },
+    { name: "EA South Africa", logo: "/media/logos/effectivealtruism.co.za.png", url: "https://www.effectivealtruism.co.za", text: "Programmes, events and free career conversations in South Africa." },
+    { name: "EA Nigeria", logo: "/media/logos/effectivealtruism.org.png", url: "https://forum.effectivealtruism.org/groups/xrvwspdqKbnvYj4bm", text: "The national group, based in Abuja. It hosted Africa's first EAGx conference in 2025." },
   ]},
   { group: "Later in your career", items: [
-    { name: "AIM (Ambitious Impact)", url: "https://www.ambitiousimpact.com", text: "Helps people start new, highly effective charities. Several of its charities work in Africa." },
+    { name: "AIM (Ambitious Impact)", logo: "/media/logos/ambitiousimpact.com.png", url: "https://www.ambitiousimpact.com", text: "Helps people start new, highly effective charities. Several of its charities work in Africa." },
   ]},
 ];
 

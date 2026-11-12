@@ -8,6 +8,7 @@ const embed = FORM_URL ? FORM_URL.replace(/\/viewform.*$/, "/viewform?embedded=t
     <h1>Join the club</h1>
     <p class="lede muted">Signing up takes two minutes, and it means you will hear about every meeting. We meet on Wednesdays from 9 to 9:30 pm in the {PLACE}.</p>
   </header>
+  <figure class="strip wrap"><img src="/media/photos/join.jpg" alt="Students in a classroom" width="1600" height="900" /></figure>
   <section class="wrap" style="padding-bottom:80px">
     {embed
       ? <div class="formbox"><iframe src={embed} title="Sign up for Effective Altruism at ALA" loading="lazy">Loading the form</iframe></div>

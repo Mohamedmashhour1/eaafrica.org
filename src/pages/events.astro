@@ -9,13 +9,14 @@ const day = (d) => new Date(d + "T12:00:00").toLocaleDateString("en-GB", { weekd
     <h1>We meet on Wednesdays from 9 to 9:30 pm in the {PLACE}.</h1>
     <p class="lede muted">It is right after prep and before check-in. This term we meet twice. In Term 2 and Term 3, we meet twice a month for two months. You can come to any meeting, even if you missed the last one.</p>
   </header>
+  <figure class="lc wrap"><img src="/media/photos/learning-commons.jpg" alt="The Learning Commons building at ALA" width="1200" height="500" /><figcaption>This is the Learning Commons. We meet in the foyer.</figcaption></figure>
   <section class="wrap" style="padding-bottom:40px">
     <h2 style="font-size:30px;margin-bottom:16px">Coming up</h2>
     <div id="upcoming">
       {EVENTS.map((e) => (
         <div class="ev" data-date={e.date}>
           <div><div class="d">{day(e.date)}</div><div class="t2">{e.term}, {TIME}</div></div>
-          <div><h3>{e.title}</h3><p>{e.text} {e.session && <a href={`/programme#s-${e.session}`}>See the session</a>}</p></div>
+          <div><h3>{e.title}</h3><p>{e.text} {e.session && <a href={`/programme#s-${e.session}`}>See the session</a>}</p>{e.photo && <img class="evphoto" src={e.photo} alt={`Photo from ${e.title}`} loading="lazy" />}</div>
         </div>
       ))}
     </div>
